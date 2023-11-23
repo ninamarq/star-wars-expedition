@@ -14,13 +14,13 @@ export const SideBarRoutes = () => {
         <h1>PlanetsApp</h1>
       </s.DynamicLink>
       <s.DynamicLink
-        isSelected={isPathnameSameAsRefLink("planets")}
+        $isSelected={isPathnameSameAsRefLink("planets")}
         onClick={() => push("/planets")}
       >
         Planets
       </s.DynamicLink>
       <s.DynamicLink
-        isSelected={isPathnameSameAsRefLink("favorites")}
+        $isSelected={isPathnameSameAsRefLink("favorites")}
         onClick={() => push("/favorites")}
       >
         Favorites

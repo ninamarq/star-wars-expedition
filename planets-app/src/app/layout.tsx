@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Star Wars Expedition</title>
+        <title>PlanetsApp</title>
       </head>
       <body className={lato.className}>
         <SideBarRoutes />
