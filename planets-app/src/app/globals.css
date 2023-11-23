@@ -22,6 +22,7 @@
 html,
 body {
   height: 100%;
+  width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
   display: flex;
@@ -36,6 +37,25 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+aside {
+  height: 100%;
+  width: 266px;
+  min-width: 266px;
+  background-color: var(--blue-background);
+  color: var(--grey-color);
+  display: flex;
+  flex-direction: column;
+  & h1 {
+    padding: 16px;
+    cursor: default;
+  }
+}
+
+aside a {
+  width: 100%;
+  padding: 16px;
 }
 
 @media (prefers-color-scheme: dark) {

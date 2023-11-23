@@ -9,10 +9,8 @@ export const SideBarRoutes = () => {
   const isPathnameSameAsRefLink = (ref: string) => pathname.includes(ref);
 
   return (
-    <s.SideBarContainer>
-      <s.DynamicLink onClick={() => push("/")}>
-        <h1>PlanetsApp</h1>
-      </s.DynamicLink>
+    <aside>
+      <h1>PlanetsApp</h1>
       <s.DynamicLink
         $isSelected={isPathnameSameAsRefLink("planets")}
         onClick={() => push("/planets")}
@@ -25,6 +23,6 @@ export const SideBarRoutes = () => {
       >
         Favorites
       </s.DynamicLink>
-    </s.SideBarContainer>
+    </aside>
   );
 };

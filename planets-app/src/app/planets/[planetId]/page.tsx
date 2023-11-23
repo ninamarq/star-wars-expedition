@@ -1,3 +1,10 @@
+"use client";
+
+import { useQuery } from "react-query";
+import { getAllPlanets } from "@/services";
+
 export default function PlanetId() {
-  return <h1>Planet id</h1>;
+  const { data } = useQuery("star-wars-all-planets", () => getAllPlanets());
+
+  return <p>{JSON.stringify(data)}</p>;
 }

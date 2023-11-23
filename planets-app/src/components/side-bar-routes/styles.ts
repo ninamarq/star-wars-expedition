@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-const SideBarContainer = styled.aside`
-  height: 100%;
-  width: 266px;
-  background-color: var(--blue-background);
-  color: var(--grey-color);
-  display: flex;
-  flex-direction: column;
-  padding-top: 16px;
-`;
-
 const DynamicLink = styled.a<{ $isSelected?: boolean }>`
   width: 100%;
   padding: 16px;
@@ -25,4 +15,4 @@ const DynamicLink = styled.a<{ $isSelected?: boolean }>`
   }
 `;
 
-export const styles = { SideBarContainer, DynamicLink };
+export const styles = { DynamicLink };
