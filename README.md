@@ -8,7 +8,7 @@ This repository explores techniques for developing a data management system usin
 
 To ensure a consistent and visually appealing user interface, the project design aligns with the proposal available on [Figma](https://www.figma.com/file/LUmB3DVIrCS5zVME8zfeQu/Front-technical-challenge?type=design&node-id=1-8)
 
-<img src="./src/assets/preview-figma-img.png" />
+<img src="./star-wars-client-app/src/assets/preview-figma-img.png" />
 
 ## Demonstration 🎬
 
