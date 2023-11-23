@@ -1,7 +1,8 @@
-import { Roboto } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
+import { SideBarRoutes } from "@/components";
 
-const roboto = Roboto({
+const lato = Lato({
   subsets: ["latin"],
   weight: "400",
 });
@@ -16,7 +17,10 @@ export default function RootLayout({
       <head>
         <title>Star Wars Expedition</title>
       </head>
-      <body className={roboto.className}>{children}</body>
+      <body className={lato.className}>
+        <SideBarRoutes />
+        {children}
+      </body>
     </html>
   );
 }
