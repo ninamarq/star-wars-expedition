@@ -1,3 +1,5 @@
+import { IPlanet } from "@/types";
+
 const dispatchStorageChangeEvent = () => {
   window.dispatchEvent(new Event("storage"));
 };
@@ -13,7 +15,7 @@ const parseLocalStorageData = (key: string) => {
 };
 
 const setItemAsFavoriteOnLocalStorage = (
-  itemName: string,
+  item: any | IPlanet,
   localStorageKey: string
 ) => {
   const localData = parseLocalStorageData(localStorageKey);
@@ -22,7 +24,7 @@ const setItemAsFavoriteOnLocalStorage = (
     localStorageKey,
     JSON.stringify({
       ...localData,
-      [itemName]: localData[itemName] ? undefined : itemName,
+      [item.name]: localData[item.name] ? undefined : item,
     })
   );
 

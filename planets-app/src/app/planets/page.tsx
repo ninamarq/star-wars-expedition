@@ -4,6 +4,7 @@ import SpinLoadingDiv from "@/components/spin-loading";
 import { getAllPlanets } from "@/services";
 import { useQuery } from "react-query";
 import { FavoriteStar } from "@/components/favorite-star";
+import { styles as s } from "./styles";
 
 export default function Planets() {
   const {
@@ -37,8 +38,8 @@ export default function Planets() {
 
   return (
     <section>
-      <h2>Planets</h2>
-      <table>
+      <h2 style={{ padding: "16px" }}>Planets</h2>
+      <s.PlanetsTable className="sortable">
         <thead>
           <tr>
             <th>Name</th>
@@ -57,14 +58,14 @@ export default function Planets() {
               <td>{planetElement.population}</td>
               <td>
                 <FavoriteStar
-                  itemName={planetElement.name}
+                  item={planetElement}
                   localStorageKey="planets-app-favorites"
                 />
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </s.PlanetsTable>
     </section>
   );
 }

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { handleStorageChange, setItemAsFavoriteOnLocalStorage } from "@/utils";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import { IPlanet } from "@/types";
 
 interface IFavoriteStarProps {
-  itemName: string;
+  item: any | IPlanet;
   localStorageKey: string;
 }
 
@@ -35,11 +36,11 @@ export const FavoriteStar: React.FC<IFavoriteStarProps> = (
   return (
     <div
       onClick={() =>
-        setItemAsFavoriteOnLocalStorage(props.itemName, props.localStorageKey)
+        setItemAsFavoriteOnLocalStorage(props.item, props.localStorageKey)
       }
       style={{ cursor: "pointer" }}
     >
-      {isItemFavorite(props.itemName) ? (
+      {isItemFavorite(props.item.name) ? (
         <FaStar
           style={{
             color: "var(--favorite-color)",
