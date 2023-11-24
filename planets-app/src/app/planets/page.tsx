@@ -2,34 +2,25 @@
 
 import SpinLoadingDiv from "@/components/spin-loading";
 import { getAllPlanets } from "@/services";
-import { IPlanet } from "@/types";
-import { useState } from "react";
 import { useQuery } from "react-query";
 import { FavoriteStar } from "@/components/favorite-star";
 
 export default function Planets() {
-  const [planets, setPlanets] = useState<Array<IPlanet>>([]);
-  const { isLoading } = useQuery(
-    "star-wars-all-planets",
-    () => getAllPlanets(),
-    {
-      refetchOnMount: "always",
-      cacheTime: 3600000,
-      staleTime: 3599999,
-      onError() {
-        setPlanets([]);
-      },
-      onSuccess(data) {
-        setPlanets(data);
-      },
-    }
-  );
+  const {
+    isLoading,
+    isRefetching,
+    data: planetsData,
+  } = useQuery("star-wars-all-planets", () => getAllPlanets(), {
+    // Adding cachetime and stale to control data from 1 hour, after that it will invalidade query, making a refetch
+    cacheTime: 3599999,
+    staleTime: 3600000,
+  });
 
-  if (isLoading) {
+  if (isLoading || isRefetching) {
     return <SpinLoadingDiv />;
   }
 
-  if (!planets?.length) {
+  if (!planetsData?.length) {
     return (
       <section
         style={{
@@ -58,7 +49,7 @@ export default function Planets() {
           </tr>
         </thead>
         <tbody>
-          {planets.map((planetElement) => (
+          {planetsData?.map((planetElement) => (
             <tr key={planetElement.name}>
               <td>{planetElement.name}</td>
               <td>{planetElement.climate}</td>
