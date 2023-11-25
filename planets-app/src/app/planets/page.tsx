@@ -1,24 +1,15 @@
 "use client";
 
 import SpinLoadingDiv from "@/components/spin-loading-div";
-import { getAllPlanets } from "@/services";
-import { useQuery } from "react-query";
 import { useEffect, useState } from "react";
 import { IPlanet } from "@/types";
 import { PlanetsTable } from "@/components/planets-table";
+import useGetAllPlanets from "@/hooks/useGetAllPlanets";
 
 export default function Planets() {
   const [planets, setPlanets] = useState<Array<IPlanet>>([]);
 
-  const {
-    isLoading,
-    isRefetching,
-    data: planetsData,
-  } = useQuery("star-wars-all-planets", () => getAllPlanets(), {
-    // Adding cachetime and stale to control data from 1 hour, after that it will invalidade query, making a refetch
-    cacheTime: 3599999,
-    staleTime: 3600000,
-  });
+  const { isLoading, isRefetching, data: planetsData } = useGetAllPlanets();
 
   useEffect(() => {
     if (!planetsData) return;

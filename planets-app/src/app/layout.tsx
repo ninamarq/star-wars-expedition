@@ -24,7 +24,7 @@ export default function RootLayout({
       </head>
       <body className={lato.className}>
         <SideBarRoutes />
-        <main style={{ width: "100%", overflowY: "auto" }}>
+        <main style={{ width: "100%", overflowY: "auto", overflowX: "hidden" }}>
           <QueryClientProvider client={queryClient}>
             {children}
           </QueryClientProvider>
