@@ -1,17 +1,18 @@
 "use client";
 
-import SpinLoadingDiv from "@/components/spin-loading-div";
 import { IPlanet } from "@/types";
 import {
   parseLocalStorageData,
   setItemAsFavoriteOnLocalStorage,
 } from "@/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useState, BaseSyntheticEvent } from "react";
 import { styles as s } from "./styles";
+import { ModalDelete, SpinLoadingDiv } from "@/components";
 
 export default function Favorites() {
   const [favoritesList, setFavoritesList] = useState<Array<IPlanet>>([]);
   const [isLoadingFavorites, setIsLoadingFavorites] = useState<boolean>(true);
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
 
   useEffect(() => {
     const localFavorites = parseLocalStorageData("planets-app-favorites");
@@ -62,21 +63,26 @@ export default function Favorites() {
       >
         {favoritesList?.map((planet) => (
           <s.FavoriteCard key={planet.name}>
-            <header>
-              <div>
-                <h3>{planet.name}</h3>
-                <p>{planet.terrain}</p>
-              </div>
-              <p
-                onClick={(event) =>
+            {showDeleteModal && (
+              <ModalDelete
+                handleClose={() => setShowDeleteModal(false)}
+                handleDelete={(event: BaseSyntheticEvent) =>
                   setItemAsFavoriteOnLocalStorage(
                     planet,
                     "planets-app-favorites",
                     event
                   )
                 }
-                id="remove-favorite"
               >
+                <p>Planet will be removed from favorites</p>
+              </ModalDelete>
+            )}
+            <header>
+              <div>
+                <h3>{planet.name}</h3>
+                <p>{planet.terrain}</p>
+              </div>
+              <p onClick={() => setShowDeleteModal(true)} id="remove-favorite">
                 x
               </p>
             </header>

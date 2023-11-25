@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import SpinLoadingDiv from "@/components/spin-loading-div";
+import { SpinLoadingDiv } from "@/components";
 
 export default function Home() {
   const { push } = useRouter();

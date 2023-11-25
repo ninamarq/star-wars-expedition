@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SpinLoadingDiv = styled.div`
+export const SpinLoadingDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,5 +25,3 @@ const SpinLoadingDiv = styled.div`
     }
   }
 `;
-
-export default SpinLoadingDiv;

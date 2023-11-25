@@ -1,9 +1,8 @@
 "use client";
 
-import SpinLoadingDiv from "@/components/spin-loading-div";
+import { SpinLoadingDiv, PlanetsTable } from "@/components";
 import { useEffect, useState } from "react";
 import { IPlanet } from "@/types";
-import { PlanetsTable } from "@/components/planets-table";
 import useGetAllPlanets from "@/hooks/useGetAllPlanets";
 
 export default function Planets() {

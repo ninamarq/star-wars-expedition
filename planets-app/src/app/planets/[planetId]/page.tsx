@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { IPlanet } from "@/types";
-import SpinLoadingDiv from "@/components/spin-loading-div";
-import { PlanetsTable } from "@/components/planets-table";
+import { SpinLoadingDiv, PlanetsTable } from "@/components";
 import { useParams } from "next/navigation";
 import { useGetAllPlanets, useGetPlanetById } from "@/hooks";
 import { styles as s } from "./styles";
