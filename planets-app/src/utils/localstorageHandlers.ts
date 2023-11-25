@@ -1,3 +1,4 @@
+import type { BaseSyntheticEvent } from "react";
 import { IPlanet } from "@/types";
 
 const dispatchStorageChangeEvent = () => {
@@ -16,8 +17,11 @@ const parseLocalStorageData = (key: string) => {
 
 const setItemAsFavoriteOnLocalStorage = (
   item: any | IPlanet,
-  localStorageKey: string
+  localStorageKey: string,
+  event: BaseSyntheticEvent
 ) => {
+  event.stopPropagation();
+
   const localData = parseLocalStorageData(localStorageKey);
 
   localStorage.setItem(

@@ -24,7 +24,7 @@ const PlanetsTable = styled.table`
   tbody tr {
     cursor: pointer;
     &:hover {
-      background-color: var(--color-grey-medium);
+      background-color: var(--grey-color);
     }
   }
 `;

@@ -1,12 +1,16 @@
 "use client";
 
+import { useMemo } from "react";
 import { styles as s } from "./styles";
 import { usePathname, useRouter } from "next/navigation";
 
 export const SideBarRoutes = () => {
   const pathname = usePathname();
   const { push } = useRouter();
-  const isPathnameSameAsRefLink = (ref: string) => pathname.includes(ref);
+  const isPathnameSameAsRefLink = useMemo(
+    () => (ref: string) => pathname.includes(ref),
+    [pathname]
+  );
 
   return (
     <aside>

@@ -5,8 +5,20 @@ import { getAllPlanets } from "@/services";
 import { useQuery } from "react-query";
 import { FavoriteStar } from "@/components/favorite-star";
 import { styles as s } from "./styles";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { IPlanet } from "@/types";
+import { handleSortClick } from "@/utils";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 export default function Planets() {
+  const { push } = useRouter();
+  const [planets, setPlanets] = useState<Array<IPlanet>>([]);
+  const [hasSortedByKey, setHasSortedByKey] = useState<{
+    diameter: boolean;
+    population: boolean;
+  }>({ diameter: false, population: false });
+
   const {
     isLoading,
     isRefetching,
@@ -17,11 +29,22 @@ export default function Planets() {
     staleTime: 3600000,
   });
 
+  const handleClickOnPlanetRow = (urlToRedirect: string) => {
+    const planetId = urlToRedirect.charAt(urlToRedirect.length - 2);
+    push(`/planets/${planetId}`);
+  };
+
+  useEffect(() => {
+    if (!planetsData) return;
+
+    setPlanets(planetsData);
+  }, [planetsData]);
+
   if (isLoading || isRefetching) {
     return <SpinLoadingDiv />;
   }
 
-  if (!planetsData?.length) {
+  if (!planets?.length) {
     return (
       <section
         style={{
@@ -44,14 +67,61 @@ export default function Planets() {
           <tr>
             <th>Name</th>
             <th>Climate</th>
-            <th>Diameter</th>
-            <th>Population</th>
+            <th
+              style={{ cursor: "pointer" }}
+              onClick={() =>
+                handleSortClick({
+                  hasSorted: hasSortedByKey.diameter,
+                  originArr: planets,
+                  action: (newPlanets) => {
+                    setPlanets(newPlanets);
+                    setHasSortedByKey((prevState) => ({
+                      ...prevState,
+                      diameter: !prevState.diameter,
+                    }));
+                  },
+                })
+              }
+            >
+              Diameter
+              {hasSortedByKey.diameter ? (
+                <FaArrowDown style={{ margin: "0 8px" }} />
+              ) : (
+                <FaArrowUp style={{ margin: "0 8px" }} />
+              )}
+            </th>
+            <th
+              style={{ cursor: "pointer" }}
+              onClick={() =>
+                handleSortClick({
+                  hasSorted: hasSortedByKey.population,
+                  originArr: planets,
+                  action: (newPlanets) => {
+                    setPlanets(newPlanets);
+                    setHasSortedByKey((prevState) => ({
+                      ...prevState,
+                      population: !prevState.population,
+                    }));
+                  },
+                })
+              }
+            >
+              Population
+              {hasSortedByKey.population ? (
+                <FaArrowDown style={{ margin: "0 8px" }} />
+              ) : (
+                <FaArrowUp style={{ margin: "0 8px" }} />
+              )}
+            </th>
             <th>Favorite</th>
           </tr>
         </thead>
         <tbody>
-          {planetsData?.map((planetElement) => (
-            <tr key={planetElement.name}>
+          {planets?.map((planetElement) => (
+            <tr
+              key={planetElement.name}
+              onClick={() => handleClickOnPlanetRow(planetElement.url)}
+            >
               <td>{planetElement.name}</td>
               <td>{planetElement.climate}</td>
               <td>{planetElement.diameter}</td>

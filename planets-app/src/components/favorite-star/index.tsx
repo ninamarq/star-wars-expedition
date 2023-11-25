@@ -35,8 +35,12 @@ export const FavoriteStar: React.FC<IFavoriteStarProps> = (
 
   return (
     <div
-      onClick={() =>
-        setItemAsFavoriteOnLocalStorage(props.item, props.localStorageKey)
+      onClick={(event) =>
+        setItemAsFavoriteOnLocalStorage(
+          props.item,
+          props.localStorageKey,
+          event
+        )
       }
       style={{ cursor: "pointer" }}
     >
