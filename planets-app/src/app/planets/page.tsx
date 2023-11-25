@@ -1,6 +1,6 @@
 "use client";
 
-import SpinLoadingDiv from "@/components/spin-loading";
+import SpinLoadingDiv from "@/components/spin-loading-div";
 import { getAllPlanets } from "@/services";
 import { useQuery } from "react-query";
 import { FavoriteStar } from "@/components/favorite-star";
