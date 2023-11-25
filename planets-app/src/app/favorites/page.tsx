@@ -3,7 +3,6 @@
 import SpinLoadingDiv from "@/components/spin-loading-div";
 import { IPlanet } from "@/types";
 import {
-  handleStorageChange,
   parseLocalStorageData,
   setItemAsFavoriteOnLocalStorage,
 } from "@/utils";
@@ -59,7 +58,6 @@ export default function Favorites() {
           gap: "32px",
           marginTop: "16px",
           flexWrap: "wrap",
-          overflowY: "auto",
         }}
       >
         {favoritesList?.map((planet) => (

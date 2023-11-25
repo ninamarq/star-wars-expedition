@@ -1,8 +1,10 @@
 const handleSortClick = ({
   hasSorted,
   originArr,
+  key,
   action,
 }: {
+  key: string;
   hasSorted: boolean;
   originArr: any[];
   action: (arr: any[]) => void;
@@ -16,7 +18,7 @@ const handleSortClick = ({
   }
 
   let sortedPlanets = copyPlanets.sort(
-    (a, b) => Number(a.diameter) - Number(b.diameter)
+    (a, b) => Number(a[key]) - Number(b[key])
   );
 
   action(sortedPlanets);
