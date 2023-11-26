@@ -2,7 +2,7 @@
 
 Welcome to the Star Wars Expedition project! 🚀
 
-## Description
+## Description ✏️
 
 This repository explores techniques for developing a data management system using the [Star Wars API](https://swapi.dev/). The application is built using TypeScript, Next.js (leveraging app routes), and Styled Components.
 
@@ -26,27 +26,29 @@ Here we have the results obtained by page.
 
 <img src="./planets-app/src/assets/favorites-page.png" />
 
-## Development and technologies
+## Development and technologies 🧠
 
 For this project, the technologies used were:
 
 - [React icons](https://react-icons.github.io/react-icons/)
   - This library was used with the only purpose to get the best SVGs for the projec
 - [React query (Tanstack query)](https://tanstack.com/query/v3/):
-  - React query was used to cache the results from Star Wars API. The purpose was to avoid rerenders or refetching without necessity, resulting on better performance and clean async data management.
+  - React query was employed to cache the Star Wars API results, optimizing performance by preventing unnecessary rerenders or refetching, ensuring clean asynchronous data management.
 - [Next.js](https://nextjs.org/)
 
-  - The choose of Next was based on better routes performance, using the [App route](https://nextjs.org/docs/app/building-your-application/routing) architecture. The structure is built according to directories created inside `/app`. Each directory inside app means a page/route to the project. This method provides performable page routing and pushing, and params management as well.
+  - Next.js was chosen for its superior route performance, utilizing the [App route](https://nextjs.org/docs/app/building-your-application/routing) architecture. The directory structure inside /app represents each page/route in the project, providing efficient page routing, pushing, and parameter management.
 
   <img src="./planets-app/src/assets/app-route.png" />
 
-## What would I do different?
+- [Styled Components](https://styled-components.com/)
+
+## What would I do different? 🤔
 
 - Testing
-  - As testing gets time to be built and performed well to cover the majority files and functionalities of the project. Probably, writing tests that cover at least 80% of the projects will provide safety use for our users.
+  - Implementing comprehensive testing covering at least 80% of the project files and functionalities would ensure a safer user experience.
 - Zustand or Valtio
-  - For scalability and better management from states and data, I would like to use some of these twos libraries to improve the performance and amount of data controlled. Using these would allow security and safety for both users and developers who will maintain or design new features for PlanetsApp, providing easier and faster development of data use.
-- Responsivity with MaterialUI displays
+  - Considering the utilization of either Zustand or Valtio for better state and data management to enhance scalability and performance. These libraries would facilitate secure and efficient development of PlanetsApp, benefiting both users and developers in terms of data control and faster feature design or maintenance.
+- Responsiveness with MaterialUI displays
 
 ## Instructions 📑
 
