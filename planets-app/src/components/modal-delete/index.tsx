@@ -1,26 +1,33 @@
+import { styles as s } from "./styles";
+
 interface IModalDeleteProps {
   handleClose: Function;
   handleDelete: Function;
-  children: React.ReactNode;
 }
 
 export const ModalDelete: React.FC<IModalDeleteProps> = (
   props: IModalDeleteProps
 ) => {
   return (
-    <div>
-      <section className="modal-main">
-        {props.children}
-        <button onClick={() => props.handleClose()}>Cancel</button>
-        <button
-          onClick={(event) => {
-            props.handleClose();
-            props.handleDelete(event);
-          }}
-        >
-          Delete
-        </button>
+    <s.ModalDelete>
+      <section>
+        <s.ModalHeader>
+          <h3>Remove favorite</h3>
+          <p onClick={() => props.handleClose()}>x</p>
+        </s.ModalHeader>
+        <p>Planet will be removed from favorites</p>
+        <s.ModalButtonsContainer>
+          <p onClick={() => props.handleClose()}>Cancel</p>
+          <button
+            onClick={(event) => {
+              props.handleClose();
+              props.handleDelete(event);
+            }}
+          >
+            Remove
+          </button>
+        </s.ModalButtonsContainer>
       </section>
-    </div>
+    </s.ModalDelete>
   );
 };

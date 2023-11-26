@@ -12,7 +12,10 @@ import { ModalDelete, SpinLoadingDiv } from "@/components";
 export default function Favorites() {
   const [favoritesList, setFavoritesList] = useState<Array<IPlanet>>([]);
   const [isLoadingFavorites, setIsLoadingFavorites] = useState<boolean>(true);
-  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+  const [showDeleteModal, setShowDeleteModal] = useState<{
+    show: boolean;
+    currentPlanet?: IPlanet;
+  }>({ show: false });
 
   useEffect(() => {
     const localFavorites = parseLocalStorageData("planets-app-favorites");
@@ -61,28 +64,31 @@ export default function Favorites() {
           flexWrap: "wrap",
         }}
       >
+        {showDeleteModal.show && (
+          <ModalDelete
+            handleClose={() => setShowDeleteModal({ show: false })}
+            handleDelete={(event: BaseSyntheticEvent) =>
+              setItemAsFavoriteOnLocalStorage(
+                showDeleteModal.currentPlanet,
+                "planets-app-favorites",
+                event
+              )
+            }
+          />
+        )}
         {favoritesList?.map((planet) => (
           <s.FavoriteCard key={planet.name}>
-            {showDeleteModal && (
-              <ModalDelete
-                handleClose={() => setShowDeleteModal(false)}
-                handleDelete={(event: BaseSyntheticEvent) =>
-                  setItemAsFavoriteOnLocalStorage(
-                    planet,
-                    "planets-app-favorites",
-                    event
-                  )
-                }
-              >
-                <p>Planet will be removed from favorites</p>
-              </ModalDelete>
-            )}
             <header>
               <div>
                 <h3>{planet.name}</h3>
                 <p>{planet.terrain}</p>
               </div>
-              <p onClick={() => setShowDeleteModal(true)} id="remove-favorite">
+              <p
+                onClick={() =>
+                  setShowDeleteModal({ show: true, currentPlanet: planet })
+                }
+                id="remove-favorite"
+              >
                 x
               </p>
             </header>
