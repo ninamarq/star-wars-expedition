@@ -10,17 +10,16 @@ const ModalDelete = styled.div<{ $isBorderWhite?: boolean }>`
   backdrop-filter: blur(1px);
   section {
     position: fixed;
+    overflow-x: hidden;
     background: var(--background);
-    padding: 16px;
     border-radius: 5px;
-    width: 400px;
+    width: 420px;
     height: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    gap: 16px;
     box-shadow: 0px 4px 4px 0px #00000040;
   }
 `;
@@ -28,12 +27,16 @@ const ModalDelete = styled.div<{ $isBorderWhite?: boolean }>`
 const ModalHeader = styled.header`
   display: flex;
   justify-content: space-between;
+  padding: 8px 16px;
   align-items: center;
   width: 100%;
-  color: var(--error-main-background);
+  background: var(--error-light-background);
+  h3 {
+    color: var(--error-main-background);
+  }
   p {
-    color: var(--color-grey-darker);
     font-size: 24px;
+    color: var(--color-grey-darker);
     &:hover {
       transition: 0.5s;
       opacity: 0.9;
@@ -45,6 +48,7 @@ const ModalHeader = styled.header`
 const ModalButtonsContainer = styled.div`
   display: flex;
   align-self: flex-end;
+  padding: 8px;
   align-items: center;
   gap: 16px;
 

@@ -15,7 +15,9 @@ export const ModalDelete: React.FC<IModalDeleteProps> = (
           <h3>Remove favorite</h3>
           <p onClick={() => props.handleClose()}>x</p>
         </s.ModalHeader>
-        <p>Planet will be removed from favorites</p>
+        <p style={{ padding: "8px 16px" }}>
+          Planet will be removed from favorites
+        </p>
         <s.ModalButtonsContainer>
           <p onClick={() => props.handleClose()}>Cancel</p>
           <button
