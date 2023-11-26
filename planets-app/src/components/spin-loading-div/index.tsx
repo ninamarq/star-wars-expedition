@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SpinLoadingDiv = styled.div`
+export const SpinLoadingDiv = styled.div<{ $isBorderWhite?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,8 +12,16 @@ export const SpinLoadingDiv = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 4px solid var(--blue-background);
-    border-color: var(--blue-background) transparent;
+    border: 4px solid
+      var(
+        ${(props) =>
+          props.$isBorderWhite ? "--background" : "--blue-background"}
+      );
+    border-color: var(
+        ${(props) =>
+          props.$isBorderWhite ? "--background" : "--blue-background"}
+      )
+      transparent;
     animation: spin 1.25s linear infinite;
   }
   @keyframes spin {

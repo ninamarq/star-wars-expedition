@@ -11,7 +11,8 @@ import { removeUnderlineUpperFirstLetter } from "@/utils";
 export default function PlanetId() {
   const params = useParams();
   const [planets, setPlanets] = useState<Array<IPlanet>>([]);
-  const { data: planetsData } = useGetAllPlanets();
+  const { data: planetsData, isLoading: isLoadingPlanetsList } =
+    useGetAllPlanets();
   const {
     data: planetByIdData,
     isLoading: isLoadingPlanet,
@@ -33,15 +34,19 @@ export default function PlanetId() {
     >
       <div>
         <h2 style={{ padding: "16px" }}>Planets</h2>
-        <PlanetsTable handlePlanetsState={setPlanets} planets={planets} />
+        <PlanetsTable
+          isLoadingPlanetsData={isLoadingPlanetsList}
+          handlePlanetsState={setPlanets}
+          planets={planets}
+        />
       </div>
       <aside
         style={{
           padding: "16px",
         }}
       >
-        {isLoadingPlanet || isRefetchingPlanet ? (
-          <SpinLoadingDiv />
+        {Boolean(isLoadingPlanet || isRefetchingPlanet) ? (
+          <SpinLoadingDiv $isBorderWhite />
         ) : (
           <div
             style={{

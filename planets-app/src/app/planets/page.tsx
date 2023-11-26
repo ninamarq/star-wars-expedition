@@ -1,6 +1,6 @@
 "use client";
 
-import { SpinLoadingDiv, PlanetsTable } from "@/components";
+import { PlanetsTable } from "@/components";
 import { useEffect, useState } from "react";
 import { IPlanet } from "@/types";
 import useGetAllPlanets from "@/hooks/useGetAllPlanets";
@@ -15,10 +15,6 @@ export default function Planets() {
 
     setPlanets(planetsData);
   }, [planetsData]);
-
-  if (isLoading || isRefetching) {
-    return <SpinLoadingDiv />;
-  }
 
   if (!planets?.length) {
     return (
@@ -38,7 +34,11 @@ export default function Planets() {
   return (
     <section>
       <h2 style={{ padding: "16px" }}>Planets</h2>
-      <PlanetsTable handlePlanetsState={setPlanets} planets={planets} />
+      <PlanetsTable
+        isLoadingPlanetsData={isLoading || isRefetching}
+        handlePlanetsState={setPlanets}
+        planets={planets}
+      />
     </section>
   );
 }

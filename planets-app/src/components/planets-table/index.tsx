@@ -5,10 +5,12 @@ import { IPlanet } from "@/types";
 import { handleSortClick } from "@/utils";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { FavoriteStar } from "../favorite-star";
+import { SpinLoadingDiv } from "..";
 
 interface IPlanetsTableProps {
   planets: Array<IPlanet>;
   handlePlanetsState: (planets: Array<IPlanet>) => void;
+  isLoadingPlanetsData: boolean;
 }
 export const PlanetsTable: React.FC<IPlanetsTableProps> = (
   props: IPlanetsTableProps
@@ -22,6 +24,10 @@ export const PlanetsTable: React.FC<IPlanetsTableProps> = (
     const planetId = urlToRedirect.charAt(urlToRedirect.length - 2);
     push(`/planets/${planetId}`);
   };
+
+  if (props.isLoadingPlanetsData) {
+    return <SpinLoadingDiv />;
+  }
 
   return (
     <s.PlanetsTable className="sortable">
