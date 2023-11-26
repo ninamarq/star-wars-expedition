@@ -47,11 +47,11 @@ a {
 
 aside {
   width: 266px;
-  min-width: 266px;
   background-color: var(--blue-background);
   color: var(--grey-color);
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   & h1 {
     padding: 16px;
     cursor: default;
