@@ -1,28 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { IPlanet } from "@/types";
 import { SpinLoadingDiv, PlanetsTable } from "@/components";
 import { useParams } from "next/navigation";
-import { useGetAllPlanets, useGetPlanetById } from "@/hooks";
+import { useGetPlanetById } from "@/hooks";
 import { styles as s } from "./styles";
 import { removeUnderlineUpperFirstLetter } from "@/utils";
 
 export default function PlanetId() {
   const params = useParams();
-  const [planets, setPlanets] = useState<Array<IPlanet>>([]);
-  const { data: planetsData, isLoading: isLoadingPlanetsList } =
-    useGetAllPlanets();
   const {
     data: planetByIdData,
     isLoading: isLoadingPlanet,
     isRefetching: isRefetchingPlanet,
   } = useGetPlanetById(params.planetId as string);
-  useEffect(() => {
-    if (!planetsData) return;
-
-    setPlanets(planetsData as IPlanet[]);
-  }, [planetsData]);
 
   return (
     <section
@@ -34,11 +24,7 @@ export default function PlanetId() {
     >
       <div>
         <h2 style={{ padding: "16px" }}>Planets</h2>
-        <PlanetsTable
-          isLoadingPlanetsData={isLoadingPlanetsList}
-          handlePlanetsState={setPlanets}
-          planets={planets}
-        />
+        <PlanetsTable />
       </div>
       <aside
         style={{

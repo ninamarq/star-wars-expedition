@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { styles as s } from "./styles";
 import { IPlanet } from "@/types";
@@ -6,16 +6,20 @@ import { handleSortClick } from "@/utils";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { FavoriteStar } from "../favorite-star";
 import { SpinLoadingDiv } from "..";
+import { useGetAllPlanets } from "@/hooks";
 
-interface IPlanetsTableProps {
-  planets: Array<IPlanet>;
-  handlePlanetsState: (planets: Array<IPlanet>) => void;
-  isLoadingPlanetsData: boolean;
-}
-export const PlanetsTable: React.FC<IPlanetsTableProps> = (
-  props: IPlanetsTableProps
-) => {
+export const PlanetsTable: React.FC = () => {
   const { push } = useRouter();
+  const [planets, setPlanets] = useState<Array<IPlanet>>([]);
+
+  const { isLoading, isRefetching, data: planetsData } = useGetAllPlanets();
+
+  useEffect(() => {
+    if (!planetsData) return;
+
+    setPlanets(planetsData);
+  }, [planetsData]);
+
   const [hasSortedByKey, setHasSortedByKey] = useState<{
     diameter: boolean;
     population: boolean;
@@ -25,8 +29,23 @@ export const PlanetsTable: React.FC<IPlanetsTableProps> = (
     push(`/planets/${planetId}`);
   };
 
-  if (props.isLoadingPlanetsData) {
+  if (isLoading || isRefetching) {
     return <SpinLoadingDiv />;
+  }
+
+  if (!planets?.length) {
+    return (
+      <section
+        style={{
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        No planets found
+      </section>
+    );
   }
 
   return (
@@ -41,9 +60,9 @@ export const PlanetsTable: React.FC<IPlanetsTableProps> = (
               handleSortClick({
                 key: "diameter",
                 hasSorted: hasSortedByKey.diameter,
-                originArr: props.planets,
+                originArr: planets,
                 action: (newPlanets) => {
-                  props.handlePlanetsState(newPlanets);
+                  setPlanets(newPlanets);
                   setHasSortedByKey((prevState) => ({
                     ...prevState,
                     diameter: !prevState.diameter,
@@ -65,9 +84,9 @@ export const PlanetsTable: React.FC<IPlanetsTableProps> = (
               handleSortClick({
                 key: "population",
                 hasSorted: hasSortedByKey.population,
-                originArr: props.planets,
+                originArr: planets,
                 action: (newPlanets) => {
-                  props.handlePlanetsState(newPlanets);
+                  setPlanets(newPlanets);
                   setHasSortedByKey((prevState) => ({
                     ...prevState,
                     population: !prevState.population,
@@ -87,7 +106,7 @@ export const PlanetsTable: React.FC<IPlanetsTableProps> = (
         </tr>
       </thead>
       <tbody>
-        {props.planets?.map((planetElement) => (
+        {planets?.map((planetElement) => (
           <tr
             key={planetElement.name}
             onClick={() => handleClickOnPlanetRow(planetElement.url)}
