@@ -46,6 +46,7 @@ For this project, the technologies used were:
   - As testing gets time to be built and performed well to cover the majority files and functionalities of the project. Probably, writing tests that cover at least 80% of the projects will provide safety use for our users.
 - Zustand or Valtio
   - For scalability and better management from states and data, I would like to use some of these twos libraries to improve the performance and amount of data controlled. Using these would allow security and safety for both users and developers who will maintain or design new features for PlanetsApp, providing easier and faster development of data use.
+- Responsivity with MaterialUI displays
 
 ## Instructions 📑
 
