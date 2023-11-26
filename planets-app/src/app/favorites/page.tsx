@@ -48,7 +48,7 @@ export default function Favorites() {
           alignItems: "center",
         }}
       >
-        No favorites found
+        No favorites
       </section>
     );
   }
