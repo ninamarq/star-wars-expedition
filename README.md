@@ -67,7 +67,7 @@ git clone git@github.com:ninamarq/star-wars-test-expedition.git
 - After clonning the project, open it on VSCode or another code editor. Then, open the project and get into client-app for running it
 
 ```
-cd star-wars-client-app
+cd planets-app
 ```
 
 - Install dependencies
@@ -82,11 +82,13 @@ npm install
 npm run dev
 ```
 
-- Now, access the link on you terminal, or just try accessing `http://localhost:3000`
+- Now, access the link on you terminal, or just try accessing `http://localhost:3000`. If you want to watch Cypress testing, please run
 
-If you want to watch Cypress testing, please run
+```
+npm run cypress:open
+```
 
-`npm run cypress:open`
+That's it
 
 ### Thank you for being here!
 
