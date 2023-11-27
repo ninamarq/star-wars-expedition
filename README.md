@@ -8,7 +8,7 @@ This repository explores techniques for developing a data management system usin
 
 To ensure a consistent and visually appealing user interface, the project design aligns with the proposal available on [Figma](https://www.figma.com/file/LUmB3DVIrCS5zVME8zfeQu/Front-technical-challenge?type=design&node-id=1-8)
 
-<img src="./planets-app/src/assets/preview-figma-img.png" />
+<img src="./planets-app/src/assets/preview-figma-img.png" alt="preview of figma design" />
 
 ## Demonstration 🎬
 
@@ -16,15 +16,15 @@ Here we have the results obtained by page.
 
 `/planets`
 
-<img src="./planets-app/src/assets/planets-page.png" />
+<img src="./planets-app/src/assets/planets-page.png" alt="preview of planets page" />
 
 `/planets/[planetId]`
 
-<img src="./planets-app/src/assets/planet-id-page.png" />
+<img src="./planets-app/src/assets/planet-id-page.png" alt="preview of planet id page" />
 
 `/favorites`
 
-<img src="./planets-app/src/assets/favorites-page.png" />
+<img src="./planets-app/src/assets/favorites-page.png" alt="preview of favorites page" />
 
 ## Development and technologies 🧠
 
@@ -41,14 +41,18 @@ For this project, the technologies used were:
   <img src="./planets-app/src/assets/app-route.png" />
 
 - [Styled Components](https://styled-components.com/)
+- [Cypress](https://nextjs.org/docs/pages/building-your-application/optimizing/testing)
+  -Cypress is a robust test runner that serves dual purposes for End-to-End (E2E) and Component Testing within the Next.js framework. Its selection stemmed from its seamless integration with Next.js, offering straightforward setup procedures and facilitating the writing and execution of tests. Also, it was a good opportunity to study it.
+  <img src="./planets-app/src/assets/cypress-preview.png" />
 
 ## What would I do different? 🤔
 
-- Testing
-  - Implementing comprehensive testing covering at least 80% of the project files and functionalities would ensure a safer user experience.
+- Testing with Cypress
+  - Implementing comprehensive testing covering at least 80% of the project files and functionalities would ensure a safer user experience with Cypress. It is a great test runner to scale the project.
 - Zustand or Valtio
   - Considering the utilization of either Zustand or Valtio for better state and data management to enhance scalability and performance. These libraries would facilitate secure and efficient development of PlanetsApp, benefiting both users and developers in terms of data control and faster feature design or maintenance.
 - Responsiveness with MaterialUI displays
+  - For this, didn't have time to make the project responsive, probably this would be my priority after testing the app.
 
 ## Instructions 📑
 
@@ -79,6 +83,10 @@ npm run dev
 ```
 
 - Now, access the link on you terminal, or just try accessing `http://localhost:3000`
+
+If you want to watch Cypress testing, please run
+
+`npm run cypress:open`
 
 ### Thank you for being here!
 
