@@ -4,11 +4,7 @@ Welcome to the Star Wars Expedition project! 🚀
 
 ## Description ✏️
 
-This repository explores techniques for developing a data management system using the [Star Wars API](https://swapi.dev/). The application is built using TypeScript, Next.js (leveraging app routes), and Styled Components.
-
-To ensure a consistent and visually appealing user interface, the project design aligns with the proposal available on [Figma](https://www.figma.com/file/LUmB3DVIrCS5zVME8zfeQu/Front-technical-challenge?type=design&node-id=1-8)
-
-<img src="./planets-app/src/assets/preview-figma-img.png" alt="preview of figma design" />
+This repository explores techniques for developing a data management system using the [Star Wars API](https://swapi.dev/). The application was built using TypeScript, Next.js (leveraging app routes), and Styled Components.
 
 ## Demonstration 🎬
 
